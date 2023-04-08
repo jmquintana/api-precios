@@ -7,9 +7,13 @@ const PRECIOS_EN_SURTIDOR =
 
 router.get("/results", async (req, res) => {
 	const response = await getRemoteData(req, res);
-	const product = { name: "apple" };
 	res.render("home", { response });
-	// res.render("home", { product });
+});
+
+router.get("/", async (req, res) => {
+	const response = await getRemoteData(req, res);
+	// res.render("home", { response });
+	res.end(JSON.stringify({ response }, null, 3));
 });
 
 let filters = {
@@ -49,17 +53,14 @@ function titleCase(str) {
 async function getRemoteData(req, res) {
 	let filterString = urlFilters(filters);
 	let fullUrl = `${PRECIOS_EN_SURTIDOR}${filterString}`;
-	axios(`http://datos.energia.gob.ar${fullUrl}`)
+	const result = axios(`http://datos.energia.gob.ar${fullUrl}`)
 		.then((response) => {
-			// res.json(response.data.result.records);
-			res.end(JSON.stringify(response.data.result.records, null, 3));
+			// console.log(response.data.result.records);
+			return response.data.result.records;
+			// res.end(JSON.stringify(response.data.result.records, null, 3));
 		})
 		.catch((err) => console.log(err));
+	return result;
 }
-
-router.get("/", async (req, res) => {
-	const response = await getRemoteData(req, res);
-	res.render("home", { response });
-});
 
 export default router;

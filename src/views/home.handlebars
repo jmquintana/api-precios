@@ -5,12 +5,22 @@
 		</div>
 		<div class="list-container">
 			<div class="product-list">
-				{{response}}
-				{{#each response}}
-					<div> {{this}} </div>
-				{{else}}
+				{{!-- {{response}} --}}
+				<table>
+					<body>
+					{{#each response}}
+						<tr>
+						{{#each this}}
+						<td>
+{{this}}
+						</td>
+						{{/each}}
+					{{else}}
+					</body>
+				</table>
 					<div class="no-products">No products loaded</div>
 				{{/each}}
+						</tr>
 			</div>
 		</div>
 	</div>
