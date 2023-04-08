@@ -1,22 +1,31 @@
 <div class="main-container">
 	<div class="products-main-container">
-		<div class="list-header">
+		{{!-- <div class="list-header">
 			<div class="list-title">Lista de productos</div>
-		</div>
+		</div> --}}
+		<div class="top"></div>
 		<div class="list-container">
 			<div class="product-list">
-				{{!-- {{response}} --}}
 				<table>
-					<body>
+					<thead>
+						<tr>
+							<th>Empresa</th>
+							<th>Provincia</th>
+							<th>Localidad</th>
+							<th>Producto</th>
+							<th>Precio</th>
+						</tr>
+					</thead>
+					<tbody>
 					{{#each response}}
 						<tr>
-						{{#each this}}
-						<td>
-{{this}}
-						</td>
-						{{/each}}
+							<td>{{this.empresabandera}}</td>
+							<td>{{this.provincia}}</td>
+							<td>{{this.localidad}}</td>
+							<td>{{this.producto}}</td>
+							<td>{{this.precio}}</td>
 					{{else}}
-					</body>
+					</tbody>
 				</table>
 					<div class="no-products">No products loaded</div>
 				{{/each}}

@@ -10,14 +10,14 @@ router.get("/results", async (req, res) => {
 	res.render("home", { response });
 });
 
-router.get("/", async (req, res) => {
+router.get("/res", async (req, res) => {
 	const response = await getRemoteData(req, res);
 	// res.render("home", { response });
 	res.end(JSON.stringify({ response }, null, 3));
 });
 
 let filters = {
-	provincia: "CAPITAL FEDERAL",
+	provincia: "BUENOS AIRES",
 	idproducto: 2,
 	idtipohorario: 2,
 };
