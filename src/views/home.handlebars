@@ -1,0 +1,18 @@
+<div class="main-container">
+	<div class="products-main-container">
+		<div class="list-header">
+			<div class="list-title">Lista de productos</div>
+		</div>
+		<div class="list-container">
+			<div class="product-list">
+				{{response}}
+				{{#each response}}
+					<div> {{this}} </div>
+				{{else}}
+					<div class="no-products">No products loaded</div>
+				{{/each}}
+			</div>
+		</div>
+	</div>
+</div>
+<script src="/js/index.js"></script>
